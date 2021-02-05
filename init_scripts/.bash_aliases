@@ -9,3 +9,4 @@
 
 alias minicom='minicom -m -con'
 alias vim='vim -p'
+alias scope_tags_c='scope_tags_c; source cscope.set'

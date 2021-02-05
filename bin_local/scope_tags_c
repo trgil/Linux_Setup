@@ -1,0 +1,17 @@
+#!/bin/bash
+
+PROJ_DIR=$PWD
+
+# Find files in the global scope
+cd /
+
+# Real files only
+FILE_TYPE="-type f -xtype f"
+
+find $PROJ_DIR $FILE_TYPE -name '*.h' -o $FILE_TYPE -name '*.c' > ${PROJ_DIR}/cscope.db
+
+cd $PROJ_DIR
+scope -b -i cscope.db
+echo "export CSCOPE_DB=\"${PROJ_DIR}/cscope.out\"" > $PWD/cscope.set
+
+ctags -R ${PROJ_DIR}/*
