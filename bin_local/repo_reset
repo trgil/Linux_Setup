@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ -z "${1}" ]; then
+    echo 'Main branch name not provided! Assuming "master"'
+    MAIN_BRANCH="master"
+else
+    MAIN_BRANCH=${1}
+fi
+
+git checkout $MAIN_BRANCH && git pull && git clean -fxdf && git submodule update --init --recursive
